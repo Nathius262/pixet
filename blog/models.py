@@ -31,10 +31,9 @@ class Post(models.Model):
         except :
             image =""
         return image
-    
 
-    """def get_absolute_url(self):
-        return reverse('blog:details', args=[self.slug])"""
+    def get_absolute_url(self):
+        return reverse('blog:detail_post_api', args=[self.slug])
 
     class Meta:
         ordering = (
