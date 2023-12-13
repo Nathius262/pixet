@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #installed apps
+    'authentication',
 
     #django alllauth
     'allauth',
@@ -104,7 +105,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-#AUTH_USER_MODEL = 'authentication.CustomUser'
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -303,10 +304,10 @@ JAZZMIN_SETTINGS = {
     "site_icon": None,
 
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to PIXET for Team Sports",
+    "welcome_sign": "Welcome to PIXET Programming Ideas into Experience Tech",
 
     # Copyright on the footer
-    "copyright": "PIXET for Team Sports",
+    "copyright": "PIXET",
 
     # List of model admins to search from the search bar, search bar omitted if excluded
     # If you want to use a single search field you dont need to use a list, you can use a simple string
