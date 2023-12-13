@@ -31,6 +31,7 @@ INSTALLED_APPS = [
 
     #installed apps
     'authentication',
+    'blog',
 
     #django alllauth
     'allauth',
@@ -43,6 +44,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -212,6 +216,7 @@ MEDIA_URL = '/media/'  # or any prefix you choose
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn/')
 
 #STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 STATICFILES_DIRS = (
@@ -368,3 +373,50 @@ JAZZMIN_SETTINGS = {
     # Add a language dropdown into the admin
     "language_chooser": False,
 }
+
+# ckeditor
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+"""CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'office2013',
+        # 'skin': 'office2013',
+        'toolbar_Basic': [
+            ['Source', '-', 'Bold', 'Italic']
+        ],
+        'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
+        # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
+        # 'height': 291,
+        'width': '100%',
+        # 'filebrowserWindowHeight': 725,
+        # 'filebrowserWindowWidth': 940,
+        # 'toolbarCanCollapse': True,
+        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+        'tabSpaces': 4,
+
+        'extraPlugins': ','.join([
+            'html5video',
+            'video',
+            'uploadimage',  # the upload image feature
+            # your extra plugins here
+            'div',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'autogrow',
+            # 'devtools',
+            #'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath',
+            'codesnippet',
+            'mathjax',
+        ]),
+    }
+}
+
+"""
