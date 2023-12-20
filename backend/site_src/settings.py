@@ -285,34 +285,34 @@ else:
 #Jazzmin configuration
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "PIXET Admin",
+    "site_title": "Pixtinfinity Admin",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "PIXET",
+    "site_header": "PIXTINFINITY",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "PIXET",
+    "site_brand": "PIXTINFINITY",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "",
+    "site_logo": "favicon.ico",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": None,
+    "login_logo": "favicon.ico",
 
     # Logo to use for login form in dark themes (defaults to login_logo)
-    "login_logo_dark": None,
+    "login_logo_dark": "favicon.ico",
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
 
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": None,
+    "site_icon": "favicon.ico",
 
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to PIXET Programming Ideas into Experience Tech",
+    "welcome_sign": "Welcome to PIXTINFINITY Programming Ideas into Experience Tech",
 
     # Copyright on the footer
-    "copyright": "PIXET",
+    "copyright": "PIXTINFINITY",
 
     # List of model admins to search from the search bar, search bar omitted if excluded
     # If you want to use a single search field you dont need to use a list, you can use a simple string
@@ -362,7 +362,7 @@ JAZZMIN_SETTINGS = {
     # UI Tweaks #
     #############
     # Relative paths to custom CSS/JS scripts (must be present in static files)
-    "custom_css": None,
+    "custom_css": "style.css",
     "custom_js": None,
     # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
     "use_google_fonts_cdn": True,
