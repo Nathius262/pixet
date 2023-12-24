@@ -9,7 +9,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', ]
+ALLOWED_HOSTS = ['localhost', 'pixtinfinity.pythonanywhere.com']
 
 ROOT_URLCONF = f'{config("PROJECT_NAME")}.urls'
 
