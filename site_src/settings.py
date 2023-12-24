@@ -20,6 +20,7 @@ WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
     'jazzmin',
     'django.contrib.sites',
     'django.contrib.admin',
@@ -30,6 +31,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #installed apps
+    'cloudinary',
+    
+    
     'authentication',
     'blog',
 
@@ -212,17 +216,36 @@ CORS_ALLOW_HEADERS = [
 ]
 
 MEDIA_URL = '/media/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn/')
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
 
 #STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
+    #os.path.join(BASE_DIR, MEDIA_URL)
 )
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'my-manifest-directory'),
+    'SECURE': True,
+    'MEDIA_TAG': 'media',
+    'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
+    'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
+    'STATIC_TAG': 'static',
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
+    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
+                                 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
+    'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv' ,'3gp' ,'3g2' ,'wmv' ,
+                                 'mpeg' ,'flv' ,'mkv' ,'avi'],
+    'MAGIC_FILE_PATH': 'magic',
+    'PREFIX': MEDIA_URL
+}
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -240,7 +263,7 @@ else:
             'NAME': config("DB_NAME"),
             'USER': config("DB_USER"),
             'PASSWORD': config("DB_PASSWORD"),
-            'HOST': config("HOST"),
+            'HOST': config("DB_HOST"),
             'PORT': '3306',
         }
     }
@@ -263,7 +286,7 @@ else:
 
     # settings.py
 
-    LOGGING = {
+    """LOGGING = {
         'version': 1,
         'disable_existing_loggers': False,
         'handlers': {
@@ -280,7 +303,7 @@ else:
                 'propagate': True,
             },
         },
-    }
+    }"""
 
 #Jazzmin configuration
 JAZZMIN_SETTINGS = {
