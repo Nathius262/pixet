@@ -34,11 +34,11 @@ function footer(){
                 </div>
                 <div class="col-sm-3 text-primary text-right footersocial">
                     <p class="h5">Connect with Us</p>
-                    <i class="fa fa-facebook"></i>
-                    <i class="fa fa-twitter"></i>
-                    <i class="fa fa-google"></i>
-                    <i class="fa fa-pinterest"></i>
-                    <i class="fa fa-github"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-google"></i>
+                    <i class="fa-brands fa-pinterest"></i>
+                    <i class="fa-brands fa-github"></i>
                 </div>
             </div>
             <div class="copyright">
