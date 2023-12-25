@@ -8,13 +8,13 @@ from .utils import upload_location
 class Tag(models.Model):
     name = models.CharField(max_length=255, blank=False, null=True)
     date_created = models.DateTimeField(auto_now=True)
-    
+
     def __str__(self):
         return self.name
-    
-    
+
+
 class Post(models.Model):
-    title = models.CharField(max_length=300, blank=False, null=True)
+    title = models.CharField(max_length=500, blank=False, null=True)
     tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True, blank=False)
     body = RichTextUploadingField(null=False, blank=False)
     image = models.ImageField(upload_to=upload_location, null=True, blank=True)
@@ -23,7 +23,7 @@ class Post(models.Model):
     date_updated = models.DateTimeField(auto_now=True, verbose_name="date updated")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="author")
     slug = models.SlugField(blank=True, unique=True)
-    
+
     @property
     def image_url(self):
         try:

@@ -9,11 +9,12 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', 'pixtinfinity.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', 'pixtinfinity.pythonanywhere.com', 'console.cloudinary.com', 'cke4.ckeditor.com',]
 
 ROOT_URLCONF = f'{config("PROJECT_NAME")}.urls'
 
 WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
+
 
 #ASGI_APPLICATION = f'{config("PROJECT_NAME")}.routing.application'
 
@@ -31,9 +32,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #installed apps
+
     'cloudinary',
-    
-    
+
+
     'authentication',
     'blog',
 
@@ -48,7 +50,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    
+
     'ckeditor',
     'ckeditor_uploader',
 ]
@@ -215,37 +217,52 @@ CORS_ALLOW_HEADERS = [
     'access-control-allow-origin',
 ]
 
-MEDIA_URL = '/media/'  # or any prefix you choose
+
+import cloudinary
+
+STATIC_URL = "/static/"
+STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
+cloudinary.config(
+    cloud_name="dcauzrt7u",
+    api_key="251664324389484",
+    api_secret="ipy1CHsBjeSLZU1hRmh46JS2yeM",
+    api_proxy = "http://proxy.server:3128"
+)
 
-#STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
     #os.path.join(BASE_DIR, MEDIA_URL)
 )
 
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': config('CLOUD_NAME'),
     'API_KEY': config('API_KEY'),
     'API_SECRET': config('API_SECRET'),
-    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'my-manifest-directory'),
+    'api_proxy' :"http://proxy.server:3128",
     'SECURE': True,
     'MEDIA_TAG': 'media',
     'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
     'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
     'STATIC_TAG': 'static',
-    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'static/'),
     'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
                                  'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
     'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv' ,'3gp' ,'3g2' ,'wmv' ,
                                  'mpeg' ,'flv' ,'mkv' ,'avi'],
-    'MAGIC_FILE_PATH': 'magic',
-    'PREFIX': MEDIA_URL
+    'MAGIC_FILE_PATH': 'media',
+    'PREFIX': "/media/"
 }
+import cloudinary.uploader
+import cloudinary.api
+
+
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -268,11 +285,6 @@ else:
         }
     }
 
-    SECURE_SSL_REDIRECT = True
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    CSRF_COOKIE_SECURE = True
-    SESSION_COOKIE_SECURE =True
-
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = config('EMAIL_HOST_USER')
@@ -282,7 +294,7 @@ else:
     DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 
-    BASE_URL = ""
+    #BASE_URL = "pixtinfinity.pythonanywhere.com"
 
     # settings.py
 
@@ -317,19 +329,19 @@ JAZZMIN_SETTINGS = {
     "site_brand": "PIXTINFINITY",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "favicon.ico",
+    "site_logo": "favicon.png",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": "favicon.ico",
+    "login_logo": "favicon.png",
 
     # Logo to use for login form in dark themes (defaults to login_logo)
-    "login_logo_dark": "favicon.ico",
+    "login_logo_dark": "favicon.png",
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
 
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": "favicon.ico",
+    "site_icon": "favicon.png",
 
     # Welcome text on the login screen
     "welcome_sign": "Welcome to PIXTINFINITY Programming Ideas into Experience Tech",
@@ -402,7 +414,7 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
-"""CKEDITOR_CONFIGS = {
+CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'office2013',
         # 'skin': 'office2013',
@@ -441,5 +453,3 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
         ]),
     }
 }
-
-"""

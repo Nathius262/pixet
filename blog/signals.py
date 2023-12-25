@@ -21,16 +21,16 @@ def save_img(sender, instance, *args, **kwargs):
             if pic.mode in ("RGBA", 'P'):
                 blog_pic = pic.convert("RGB")
                 blog_pic.thumbnail(SIZE, Image.LANCZOS)
-                blog_pic.save(instance.image.path) """ 
-                
-@receiver(post_save, sender=Post)               
+                blog_pic.save(instance.image.path) """
+
+@receiver(post_save, sender=Post)
 def save_img(sender, instance, created, *args, **kwargs):
     if not created:
         SIZE = 600, 600
-        if instance.picture:   
+        if instance.image:
 
             import cloudinary.uploader
-            file_path = instance.picture.path
+            file_path = instance.image.path
             pic = Image.open(file_path)
             try:
                 pic.thumbnail(SIZE, Image.LANCZOS)
@@ -41,7 +41,7 @@ def save_img(sender, instance, created, *args, **kwargs):
                     profile_pic = pic.convert("RGB")
                     profile_pic.thumbnail(SIZE, Image.LANCZOS)
                     cloudinary_response = cloudinary.uploader.upload(file_path)
-                    profile_pic.save(cloudinary_response['secure_url'])      
+                    profile_pic.save(cloudinary_response['secure_url'])
 
 
 def pre_save_blog_post_receiver(sender, instance, *args, **kwargs):
