@@ -189,7 +189,11 @@ SIMPLE_JWT = {
 ###############
 CORS_URLS_REGEX = r"^/api/.*$"
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:8000", ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "https://pixtinfinity.pythonanywhere.com",
+    "https://cke4.ckeditor.com",
+]
 
 if DEBUG:
     CORS_ALLOWED_ORIGINS += [
@@ -414,9 +418,17 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
+AWS_QUERYSTRING_AUTH = False
+
+CKEDITOR_JS_URL = 'https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js'
+
+#CKEDITOR_BASEPATH = os.path.join(BASE_DIR , 'static', 'ckeditor')
+
+
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'office2013',
+        "removePlugins": "stylesheetparser",
         # 'skin': 'office2013',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
