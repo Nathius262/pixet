@@ -21,6 +21,7 @@ WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 # Application definition
 
 INSTALLED_APPS = [
+    
     'cloudinary_storage',
     'jazzmin',
     'django.contrib.sites',
@@ -32,7 +33,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #installed apps
-
     'cloudinary',
 
 
@@ -195,12 +195,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://cke4.ckeditor.com",
 ]
 
-if DEBUG:
-    CORS_ALLOWED_ORIGINS += [
-    "http://localhost:8000",
-    "http://localhost:8000",
-    ]
-
 #APPEND_SLASH=False
 
 CORS_ALLOW_METHODS = [
@@ -222,50 +216,12 @@ CORS_ALLOW_HEADERS = [
 ]
 
 
-import cloudinary
-
 STATIC_URL = "/static/"
-STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-
-cloudinary.config(
-    cloud_name="dcauzrt7u",
-    api_key="251664324389484",
-    api_secret="ipy1CHsBjeSLZU1hRmh46JS2yeM",
-    api_proxy = "http://proxy.server:3128"
-)
-
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
     #os.path.join(BASE_DIR, MEDIA_URL)
 )
-
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUD_NAME'),
-    'API_KEY': config('API_KEY'),
-    'API_SECRET': config('API_SECRET'),
-    'api_proxy' :"http://proxy.server:3128",
-    'SECURE': True,
-    'MEDIA_TAG': 'media',
-    'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
-    'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
-    'STATIC_TAG': 'static',
-    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'static/'),
-    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
-                                 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
-    'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv' ,'3gp' ,'3g2' ,'wmv' ,
-                                 'mpeg' ,'flv' ,'mkv' ,'avi'],
-    'MAGIC_FILE_PATH': 'media',
-    'PREFIX': "/media/"
-}
-import cloudinary.uploader
-import cloudinary.api
-
 
 
 if DEBUG:
@@ -276,8 +232,48 @@ if DEBUG:
             'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
         }
     }
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
+    
+    
 
 else:
+    
+    import cloudinary
+
+    STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"
+
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+    cloudinary.config(
+        cloud_name=config('CLOUD_NAME'),
+        api_key=config('API_KEY'),
+        api_secret=config('API_SECRET'),
+        api_proxy = "http://proxy.server:3128"
+    )
+
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': config('CLOUD_NAME'),
+        'API_KEY': config('API_KEY'),
+        'API_SECRET': config('API_SECRET'),
+        'api_proxy' :"http://proxy.server:3128",
+        'SECURE': True,
+        'MEDIA_TAG': 'media',
+        'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
+        'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
+        'STATIC_TAG': 'static',
+        'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'static/'),
+        'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
+                                    'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
+        'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv' ,'3gp' ,'3g2' ,'wmv' ,
+                                    'mpeg' ,'flv' ,'mkv' ,'avi'],
+        'MAGIC_FILE_PATH': 'media',
+        'PREFIX': "/media/"
+    }
+    import cloudinary.uploader
+    import cloudinary.api
+
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
