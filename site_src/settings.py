@@ -9,7 +9,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', 'pixtinfinity.pythonanywhere.com', 'console.cloudinary.com', 'cke4.ckeditor.com',]
+ALLOWED_HOSTS = ['localhost', 'pixtinfinity.pythonanywhere.com', 'console.cloudinary.com', 'cke4.ckeditor.com', config("END_POINT"),]
 
 ROOT_URLCONF = f'{config("PROJECT_NAME")}.urls'
 
@@ -22,7 +22,6 @@ WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 
 INSTALLED_APPS = [
     
-    'cloudinary_storage',
     'jazzmin',
     'django.contrib.sites',
     'django.contrib.admin',
@@ -33,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #installed apps
+    'cloudinary_storage',
     'cloudinary',
 
 
@@ -190,10 +190,18 @@ SIMPLE_JWT = {
 CORS_URLS_REGEX = r"^/api/.*$"
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
+    f'https://{config("END_POINT")}',
+    f'http://{config("END_POINT")}',
     "https://pixtinfinity.pythonanywhere.com",
     "https://cke4.ckeditor.com",
 ]
+
+if DEBUG:
+    CORS_ALLOWED_ORIGINS += [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ]  
+
 
 #APPEND_SLASH=False
 
@@ -222,6 +230,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
     #os.path.join(BASE_DIR, MEDIA_URL)
 )
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
 
 
 if DEBUG:
@@ -240,7 +249,7 @@ else:
     
     import cloudinary
 
-    STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"
+    #STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"
 
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
