@@ -9,7 +9,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', 'pixtinfinity.pythonanywhere.com', 'console.cloudinary.com', 'cke4.ckeditor.com', config("END_POINT"),]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pixtinfinity.pythonanywhere.com', 'console.cloudinary.com', 'cke4.ckeditor.com', config("END_POINT"),]
 
 ROOT_URLCONF = f'{config("PROJECT_NAME")}.urls'
 
@@ -30,6 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'corsheaders',
+    
 
     #installed apps
     'cloudinary_storage',
@@ -49,7 +52,6 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders',
 
     'ckeditor',
     'ckeditor_uploader',
@@ -58,13 +60,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 TEMPLATES = [
@@ -101,6 +103,51 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+###############
+###############
+#####
+##### DJANGO CORES HEADER CONFIGURATION
+#####
+###############
+###############
+CORS_URLS_REGEX = r"^/api/.*$"
+
+CORS_ALLOWED_ORIGINS = [    
+    f"https://{config('END_POINT')}",
+    f"http://{config('END_POINT')}",
+]
+CORS_ALLOW_ALL_ORIGINS = True
+if DEBUG:
+    CORS_ALLOWED_ORIGINS += [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+    ]  
+    
+
+#APPEND_SLASH=False
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+#CORS_ALLOW_CREDENTIALS = True
+
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
 ]
 
 
@@ -180,51 +227,11 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": datetime.timedelta(hours=72),
 }
 
-###############
-###############
-#####
-##### DJANGO CORES HEADER CONFIGURATION
-#####
-###############
-###############
-CORS_URLS_REGEX = r"^/api/.*$"
 
-CORS_ALLOWED_ORIGINS = [
-    f'https://{config("END_POINT")}',
-    f'http://{config("END_POINT")}',
-    "https://pixtinfinity.pythonanywhere.com",
-    "https://cke4.ckeditor.com",
-]
-
-if DEBUG:
-    CORS_ALLOWED_ORIGINS += [
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ]  
-
-
-#APPEND_SLASH=False
-
-CORS_ALLOW_METHODS = [
-    "DELETE",
-    "GET",
-    "OPTIONS",
-    "PATCH",
-    "POST",
-    "PUT",
-]
-CORS_ALLOW_CREDENTIALS = True
-
-
-CORS_ALLOW_HEADERS = [
-    "Content-Type",
-    "Authorization",
-    'access-control-allow-headers',
-    'access-control-allow-origin',
-]
 
 
 STATIC_URL = "/static/"
+MEDIA_URL = "/media/"
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
@@ -242,6 +249,7 @@ if DEBUG:
         }
     }
     STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn/')
     
     
 
