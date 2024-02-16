@@ -1,26 +1,36 @@
-import { Header } from "./components/Header.js"
-import { footer } from "./components/Footer.js"
-import { post, news } from "./components/Post.js"
+import {Header} from "./components/Header.js"
+import {footer} from "./components/Footer.js"
+import {renderModelList, news, navigateToDetailedPost} from "./components/fetch.js"
 
-let header  =  document.querySelector('#header')
+let header = document.querySelector('#header')
 let footerEl = document.querySelector('footer')
 let head = document.querySelector('head')
-let newsEl = document.querySelector('#main-news')
-let postEl = document.querySelector('#posts')
+const endpoint = "http://127.0.0.1:8000"
+const blog_endpoint = endpoint+"/api/post/"
+const siteURL = window.location.protocol + '//' + window.location.host
+
+let options = {
+    "method":"GET",
+	"origin": siteURL,
+    "headers":{
+        'Content-Type': 'application/json',
+        //'X-CSRFToken': csrftoken,
+    },
+}
 
 
 header.insertAdjacentHTML("afterbegin", Header())
 footerEl.insertAdjacentHTML("afterbegin", footer())
-newsEl.insertAdjacentHTML('afterbegin', news())
-postEl.insertAdjacentHTML('afterbegin', post())
+
+try {
+    //postEl.insertAdjacentHTML('afterbegin', post())
+    //renderModelList(blog_endpoint)
+} catch (TypeError) {
+    
+}
 
 
 head.insertAdjacentHTML('afterbegin', `
-    <meta charset="utf-8">
-    <meta name="description" content="Transforming Ideas into Immersive Experiences through Innovative Programming">
-    <meta name="keywords" content="pixtinifinty, pixet, pixt, infinity">
-    <meta name="author" content="pixtinifinty">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="assets/images/favicon.ico">
     <title>PIXTINFINITY</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"> 
@@ -35,3 +45,8 @@ head.insertAdjacentHTML('afterbegin', `
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
 `)
+
+
+//navigateToDetailedPost()
+
+

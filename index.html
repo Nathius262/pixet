@@ -1,175 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Transforming Ideas into Immersive Experiences through Innovative Programming">
+		<meta name="keywords" content="pixtinifinty, pixet, pixt, infinity">
+		<meta name="author" content="pixtinifinty">
+		<meta property="og:title" content="Pixtinfinity- Programing Ideas Into Experience">
+		<meta property="og:description" content="Transforming Ideas into Immersive Experiences through Innovative Programming">
+		<meta property="og:image" content="https://pixtinfinity.com/assets/images/logo-footer.png">
+		<meta property="og:url" content="https://pixtinfinity.com/">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Begin tracking codes here, including ShareThis/Analytics -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script>
+			const endpoint = "http://127.0.0.1:8000"
+			const blog_endpoint = endpoint+"/api/post/"
+			const siteURL = window.location.protocol + '//' + window.location.host
 
-<!-- Begin tracking codes here, including ShareThis/Analytics -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+			let options = {
+				"method":"GET",
+				"origin": siteURL,
+				"headers":{
+					'Content-Type': 'application/json',
+					//'X-CSRFToken': csrftoken,
+				},
+			}
+		</script>
 
-    
-<!-- End tracking codes here, including ShareThis/Analytics -->
-</head>
-<body class="layout-default">
-<!-- Begin Menu Navigation
-================================================== -->
-<header id="header" class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+		<style>
+			/*----------------------------
+      preloader area
+      ----------------------------*/
 
-</header>
-<!-- End Menu Navigation
-================================================== -->
-<div class="site-content">
-	<!-- Home Jumbotron
-    ================================================== -->
-	<section class="intro">
-	<div class="wrapintro">
-		<h1>Pixtinfinity</h1>
-		<h2 class="lead">
-			"Pixtinfinity" is a leading provider of innovative and transformative technology 
-			solutions that enhance the way people experience and engage with ideas.
-		</h2>
-		<a target="_blank" href="#" class="btn">More Info</a>
-	</div>
-	</section>
+			.loader_bg {
+				position: fixed;
+				z-index: 9999999;
+				background: #fff;
+				width: 100%;
+				height: 100%;
+			}
 
-	<div class="section layout_padding">
-		<div class="container">
-		   
-		   <div class="row">
-  				<div class="col-md-6">
-				 <div class="full blog_cont">
-					<h3 class="h6">Transforming Ideas into Immersive Experiences through Innovative Programming</h3>
-					<p style="color: var(--grey);">
-						At our company, our vision is to be a leading provider of innovative and transformative technology 
-						solutions that enhance the way people experience and engage with ideas. Our main objective is to 
-						produce blog content that goes beyond providing knowledge and information to our readers. We want 
-						to ignite their curiosity and encourage them to embrace the possibilities that technology holds in 
-						their lives. By combining our expertise in technology with our passion, for storytelling we strive 
-						to connect ideas with experiences empowering our audience to embrace the future of innovation. 
-						Our ultimate vision is a world where technology seamlessly integrates into every aspect of our lives 
-						enhancing our experiences and opening doors for growth and progress.
-					</p>
-				 </div>
-			  </div>
-			  <div class="col-md-6">
-				 <img src="assets/images/marketing_img.png" alt="#">
-			  </div>
-			  
-		   </div>
-		</div>
-	 </div>
-	<!-- Container
-    ================================================== -->
-	<div class="container">
-		<div class="main-content">
-			<!-- Featured
-            ================================================== -->
-			<!-- Posts Index
-        ================================================== -->
-			<section class="recent-posts row" id="posts">
-			
+			.loader {
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.loader img {
+				width: 280px;
+			}
+			.hidden-item {
+				visibility: hidden;
+				opacity: 0;
+				transition: visibility 0s 1s, opacity 1s linear;
+			}
+			.show-hidden{
+				visibility: hidden;
+				opacity: 1;
+				transition: visibility 0s 1.5s, opacity 1.5s linear
+			}
+
+		</style>
+
+
+		<!-- End tracking codes here, including ShareThis/Analytics -->
+	</head>
+	<body class="layout-default">
+
+
+		<div class="loader_bg" id="loader">
+            <div class="loader">
+              <img src="assets/images/loading.gif" alt="loading" />
+            </div>
+        </div>
+
+
+		<div id="root" class="show-hidden">
+			<!-- Begin Menu Navigation
+		================================================== -->
+		<header id="header" class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation"></header>
+		<!-- End Menu Navigation
+		================================================== -->
+		<div
+			class="site-content">
+			<!-- Home Jumbotron
+			    ================================================== -->
+			<section class="intro">
+				<div class="wrapintro">
+					<h1>Pixtinfinity</h1>
+					<h2 class="lead">
+						"Pixtinfinity" is a leading provider of innovative and transformative technology 
+									solutions that enhance the way people experience and engage with ideas.
+					</h2>
+					<a target="_blank" href="#" class="btn">More Info</a>
+				</div>
 			</section>
-		</div>
-	</div>
 
+			<div class="section layout_padding">
+				<div class="container">
 
-	<div class="">
-		<div class="section layout_padding dark_bg">
-			<div class="container">
-			   <div class="row">
-				  <div class="col-md-12">
-					 <div class="heading">
-						<!--<h3>Marketing</h3>-->
-					 </div>
-				  </div>
-			   </div>
-			   <div class="row">
-				  <div class="col-md-6">
-					 <img src="assets/images/p2.jpg" alt="#">
-				  </div>
-				  <div class="col-md-6">
-					 <div class="full blog_cont">
-						<h3 class="white_font">Pixtinfinity -CodeCrafters</h3>
-						<p class="white_font">
-							We are committed to being pioneers in this transformative journey constantly pushing 
-							boundaries and helping our clients stay ahead of the changing landscape. As we continue 
-							evolving and expanding we remain dedicated, to upholding our core values consistently 
-							exceeding expectations and delivering outcomes.
-							As we progress and develop our dedication, to upholding our vision and values remains unwavering.
-							We consistently aim to surpass expectations and achieve outcomes.
-						</p>
-					 </div>
-				  </div>
-			   </div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="full blog_cont">
+								<h3 class="h6">Transforming Ideas into Immersive Experiences through Innovative Programming</h3>
+								<p style="color: var(--grey);">
+									At our company, our vision is to be a leading provider of innovative and transformative technology 
+															solutions that enhance the way people experience and engage with ideas. Our main objective is to 
+															produce blog content that goes beyond providing knowledge and information to our readers. We want 
+															to ignite their curiosity and encourage them to embrace the possibilities that technology holds in 
+															their lives. By combining our expertise in technology with our passion, for storytelling we strive 
+															to connect ideas with experiences empowering our audience to embrace the future of innovation. 
+															Our ultimate vision is a world where technology seamlessly integrates into every aspect of our lives 
+															enhancing our experiences and opening doors for growth and progress.
+								</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<img src="assets/images/marketing_img.png" alt="#">
+						</div>
+
+					</div>
+				</div>
 			</div>
-		 </div>
-	</div>
+			<!-- Container
+			    ================================================== -->
+			<div class="container">
+				<div class="main-content">
+					<!-- Featured
+					            ================================================== -->
+					<!-- Posts Index
+					        ================================================== -->
+					<section class="recent-posts row" id="posts">
+						<div class="col-sm-4">
+							<div class="sidebar">
+								<div class="sidebar-section">
+									<h5><span>Useful</span></h5>
+									<ul style="list-style-type:none;">
+										<li><a target="_blank" href="https://m.do.co/c/84c9b45d0c47">Digital Ocean</a></li>
+										<li><a target="_blank" href="https://www.cloudways.com/en/pricing.php?id=153986&a_bid=005da123">Cloudways</a></li>
+										<li><a target="_blank" href="https://shareasale.com/r.cfm?b=875645&u=1087935&m=41388&urllink=&afftrack=">Page Speed Test</a></li>
+										<li><a target="_blank" href="https://elementor.com/?ref=1556">Elementor Page Builder</a></li>
+										<li><a target="_blank" href="https://www.wowthemes.net/category/freebies/">Our Freebies</a></li>
+									</ul>
+								</div>
+								<div class="sidebar-section">
+									<h5><span>Recommended</span></h5>
+									<a href="https://easydigitaldownloads.com/?ref=2135" title="Sell digital downloads with WordPress, for free"><img src="https://easydigitaldownloads.com/wp-content/uploads/2015/02/300x250-2.png" alt="Sell digital downloads with WordPress, for free"/></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-8">
+							<div class="section-title">
+								<h2><span>Stories</span></h2>
+							</div>
+							<div class="row mb-5 listrecent">
+								<!-- begin post -->
+								
+								<!-- end post -->
+								
+							</div>
+							<!-- Pagination -->
+							<div class="bottompagination">
+								<div class="navigation">
+									<nav class="pagination" id="pagination">
+										<span class="page-number"> &nbsp; &nbsp; Page 1 of 1 &nbsp; &nbsp; </span>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
 
-	<div class="main-news mt-5" id="main-news">		
-	</div>
 
-	<div class="section layout_padding">
-		<div class="container">
-		   <div class="row">
-			  <div class="col-md-12">
-				 <div class="heading">
-					<h3>About <span class="orange_color">Us</span></h3>
-				 </div>
-			  </div>
-		   </div>
-		   <div class="row">
-			  <div class="col-md-6">
-				 <img src="assets/images/4.jpg" alt="#">
-			  </div>
-			  <div class="col-md-6">
-				 <div class="full blog_cont">
-					<h4>The biggest and most awesome fact you'd love to know</h4>
-					<p>
-						Here, at Pixtinfinity, our goal is to transform the way people interact with technology. We achieve this by providing solutions that prioritize the needs of our users and enhance their experiences. We are always at the forefront of advancements constantly pushing boundaries to deliver value to our clients.
-					</p>
-				 </div>
-			  </div>
-		   </div>
-		   <div class="row margin_top_30">
-			  <div class="col-md-6">
-				<img src="assets/images/6.jpg" alt="#">
-			  </div>
-			  <div class="col-md-6">
-				 <div class="full blog_cont">
-					<h4>What 3 years of android taught me the hard way</h4>
-					<h5>MAY 19 2019  5 READ</h5>
-					<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-				 </div>
-			  </div>
-		   </div>
-		   <div class="row margin_top_30">
-			  <div class="col-md-12">
-				 <div class="button_section full center margin_top_30">
-					<a style="margin:0;" href="about.html">Read More</a>
-				 </div>
-			  </div>
-		   </div>
+			<div class="">
+				<div class="section layout_padding dark_bg">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div
+									class="heading"><!--<h3>Marketing</h3>-->
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<img src="assets/images/p2.jpg" alt="#">
+							</div>
+							<div class="col-md-6">
+								<div class="full blog_cont">
+									<h3 class="white_font">Pixtinfinity -CodeCrafters</h3>
+									<p class="white_font">
+										We are committed to being pioneers in this transformative journey constantly pushing 
+																	boundaries and helping our clients stay ahead of the changing landscape. As we continue 
+																	evolving and expanding we remain dedicated, to upholding our core values consistently 
+																	exceeding expectations and delivering outcomes.
+																	As we progress and develop our dedication, to upholding our vision and values remains unwavering.
+																	We consistently aim to surpass expectations and achieve outcomes.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="main-news mt-5" >
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-9">
+							<div class="row" id="main-news">
+	
+								
+								
+							</div>
+						</div>
+	
+						<div class="col-lg-3">
+							<div class="mn-list">
+								<h2>Read More</h2>
+								<ul>
+									<li><a href="">Lorem ipsum dolor sit amet</a></li>
+									<li><a href="">Pellentesque tincidunt enim libero</a></li>
+									<li><a href="">Morbi id finibus diam vel pretium enim</a></li>
+									<li><a href="">Duis semper sapien in eros euismod sodales</a></li>
+									<li><a href="">Vestibulum cursus lorem nibh</a></li>
+									<li><a href="">Morbi ullamcorper vulputate metus non eleifend</a></li>
+									<li><a href="">Etiam vitae elit felis sit amet</a></li>
+									<li><a href="">Nullam congue massa vitae quam</a></li>
+									<li><a href="">Proin sed ante rutrum</a></li>
+									<li><a href="">Curabitur vel lectus</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section layout_padding">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="heading">
+								<h3>About
+									<span class="orange_color">Us</span>
+								</h3>
+							</div>
+						</div>
+					</div>
+					<div class="row align-items-center">
+						<div class="col-md-6">
+							<img src="assets/images/pixtinifity logo.png" alt="#">
+						</div>
+						<div class="col-md-6">
+							<div class="full blog_cont">
+								<h4>The biggest and most awesome fact you'd love to know</h4>
+								<p>
+									Here, at Pixtinfinity, our goal is to transform the way people interact with technology. We achieve this by providing solutions that prioritize the needs of our users and enhance their experiences. We are always at the forefront of advancements constantly pushing boundaries to deliver value to our clients.
+								</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row margin_top_30">
+						<div class="col-md-12">
+							<div class="button_section full center margin_top_30">
+								<a style="margin:0;" href="about.html">Read More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.container -->
+
+			<!-- Begin Footer
+			    ================================================== -->
+			<footer class="footer"></footer>
+			<!-- End Footer
+			    ================================================== -->
 		</div>
-	 </div>
-	<!-- /.container -->
+		</div>
 
-	<!-- Begin Footer
-    ================================================== -->
-	<footer class="footer">	</footer>
-	<!-- End Footer
-    ================================================== -->
-</div>
-
-
-<!-- JavaScript
-================================================== -->
-<script type="module" src="assets/js/app.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-<script src="assets/js/masonry.pkgd.min.js"></script>
-<script src="assets/js/theme.js"></script>
+		<script type="module">
+            window.addEventListener('load', ()=>{
+              setInterval(()=>{
+                document.querySelector("#loader").classList.add('hidden-item')
+				document.querySelector("#root").classList.remove('show-hidden')
+              }, 3000)
+            })
 
 
+			import{news, renderModelList} from "/assets/js/components/fetch.js"			
+			news(blog_endpoint)
+			renderModelList(blog_endpoint)
+        </script>
 
-</body>
+
+		<!-- JavaScript
+		================================================== -->
+		<script>
+			
+			//news(blog_endpoint, options)
+		</script>
+
+		<script type="module" src="assets/js/app.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+		<script src="assets/js/masonry.pkgd.min.js"></script>
+		<script src="assets/js/theme.js"></script>
+
+
+	</body>
 </html>

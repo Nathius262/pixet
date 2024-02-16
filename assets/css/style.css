@@ -473,11 +473,11 @@ nav.main-menu {
 
 .menu-area-main li:hover a,
 .menu-area-main li:focus a {
-	color: #ff0000;
+	color: var(--blue);
 }
 
 .menu-area-main li.active a {
-	color: #ff0000;
+	color: var(--blue);
 }
 
 .right_cart_section {
@@ -1702,7 +1702,7 @@ input[type="radio"] .styled:checked+label::after {
 
 #slider_main .carousel-control-prev:hover, #slider_main .carousel-control-next:hover,
 #slider_main .carousel-control-prev:focus, #slider_main .carousel-control-next:focus {
-   background: #ff0000;
+   background: var(--blue);
    color: #fff;
 }
 
@@ -1766,12 +1766,12 @@ input[type="radio"] .styled:checked+label::after {
 
 .button_section a:hover,
 .button_section a:focus {
-	background: #ff0000 !important;
+	background: var(--blue) !important;
     color: #fff;
 }
 
 .orange_color {
-	color: #ff0000;
+	color: var(--blue);
 }
 
 .heading h3 {
@@ -2106,3 +2106,7 @@ ul.social_icon li a {
 
 .wdt {height: 250px !important;}
 
+.footersocial a i:hover{
+	background-color: var(--blue);
+	color: var(--white);
+}

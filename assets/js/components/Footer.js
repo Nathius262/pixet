@@ -32,13 +32,12 @@ function footer(){
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3 text-primary text-right footersocial">
+                <div class="col-sm-3 text-light text-right footersocial">
                     <p class="h5">Connect with Us</p>
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    <i class="fa-brands fa-google"></i>
-                    <i class="fa-brands fa-pinterest"></i>
-                    <i class="fa-brands fa-github"></i>
+                    <a href="https://web.facebook.com/profile.php?id=61554717826060"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/pixtinfinity/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="mailto:support@pixtinfinity.com"><i class="fa-brands fa-google"></i></a>
+                    <a href="https://github.com/Nathius262"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
             <div class="copyright">
