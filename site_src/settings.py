@@ -21,7 +21,7 @@ WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 # Application definition
 
 INSTALLED_APPS = [
-    
+
     'cloudinary_storage',
     'jazzmin',
     'django.contrib.sites',
@@ -58,13 +58,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 TEMPLATES = [
@@ -190,7 +190,7 @@ SIMPLE_JWT = {
 CORS_URLS_REGEX = r"^/api/.*$"
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
+    "https://pixtinfinity.com",
     "https://pixtinfinity.pythonanywhere.com",
     "https://cke4.ckeditor.com",
 ]
@@ -233,11 +233,11 @@ if DEBUG:
         }
     }
     STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
-    
-    
+
+
 
 else:
-    
+
     import cloudinary
 
     STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"

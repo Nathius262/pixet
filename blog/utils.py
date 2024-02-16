@@ -5,7 +5,7 @@ import os
 
 def upload_location(instance, filename):
     file_path = 'blog/user_{author_id}/{slug}_post.jpeg'.format(
-        author_id=str(instance.author.id), slug=generate_ref_code(), filename=filename
+        author_id=str(instance.author.id), slug=str(instance.id), filename=filename
     )
     full_path = os.path.join(settings.MEDIA_ROOT, file_path)
     if os.path.exists(full_path):
