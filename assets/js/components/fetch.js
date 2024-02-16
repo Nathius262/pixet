@@ -1,4 +1,4 @@
-const endpoint = "http://127.0.0.1:8000"
+const endpoint = "https://pixtinfinity.pythonanywhere.com"
 const blog_endpoint = endpoint+"/api/post/"
 
 async function fetchData(url, options) {

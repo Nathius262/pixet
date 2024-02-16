@@ -5,7 +5,7 @@ import {renderModelList, news, navigateToDetailedPost} from "./components/fetch.
 let header = document.querySelector('#header')
 let footerEl = document.querySelector('footer')
 let head = document.querySelector('head')
-const endpoint = "http://127.0.0.1:8000"
+const endpoint = "https://pixtinfinity.pythonanywhere.com"
 const blog_endpoint = endpoint+"/api/post/"
 const siteURL = window.location.protocol + '//' + window.location.host
 
