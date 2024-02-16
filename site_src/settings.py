@@ -9,7 +9,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', 'pixtinfinity.pythonanywhere.com', 'console.cloudinary.com', 'cke4.ckeditor.com',]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pixtinfinity.pythonanywhere.com', 'console.cloudinary.com', 'cke4.ckeditor.com', config("END_POINT"),]
 
 ROOT_URLCONF = f'{config("PROJECT_NAME")}.urls'
 
@@ -21,8 +21,12 @@ WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
 
     'cloudinary_storage',
+=======
+    
+>>>>>>> fbe21e0d742e8605dc35d5f7333f234f010c3713
     'jazzmin',
     'django.contrib.sites',
     'django.contrib.admin',
@@ -31,8 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'corsheaders',
+    
 
     #installed apps
+    'cloudinary_storage',
     'cloudinary',
 
 
@@ -49,7 +57,6 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders',
 
     'ckeditor',
     'ckeditor_uploader',
@@ -101,6 +108,51 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+###############
+###############
+#####
+##### DJANGO CORES HEADER CONFIGURATION
+#####
+###############
+###############
+CORS_URLS_REGEX = r"^/api/.*$"
+
+CORS_ALLOWED_ORIGINS = [    
+    f"https://{config('END_POINT')}",
+    f"http://{config('END_POINT')}",
+]
+CORS_ALLOW_ALL_ORIGINS = True
+if DEBUG:
+    CORS_ALLOWED_ORIGINS += [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+    ]  
+    
+
+#APPEND_SLASH=False
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+#CORS_ALLOW_CREDENTIALS = True
+
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
 ]
 
 
@@ -180,6 +232,7 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": datetime.timedelta(hours=72),
 }
 
+<<<<<<< HEAD
 ###############
 ###############
 #####
@@ -196,32 +249,19 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 #APPEND_SLASH=False
+=======
+>>>>>>> fbe21e0d742e8605dc35d5f7333f234f010c3713
 
-CORS_ALLOW_METHODS = [
-    "DELETE",
-    "GET",
-    "OPTIONS",
-    "PATCH",
-    "POST",
-    "PUT",
-]
-CORS_ALLOW_CREDENTIALS = True
-
-
-CORS_ALLOW_HEADERS = [
-    "Content-Type",
-    "Authorization",
-    'access-control-allow-headers',
-    'access-control-allow-origin',
-]
 
 
 STATIC_URL = "/static/"
+MEDIA_URL = "/media/"
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
     #os.path.join(BASE_DIR, MEDIA_URL)
 )
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
 
 
 if DEBUG:
@@ -233,14 +273,20 @@ if DEBUG:
         }
     }
     STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
+<<<<<<< HEAD
 
 
+=======
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn/')
+    
+    
+>>>>>>> fbe21e0d742e8605dc35d5f7333f234f010c3713
 
 else:
 
     import cloudinary
 
-    STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"
+    #STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"
 
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
