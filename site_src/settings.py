@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     
 
     #installed apps
-    'cloudinary_storage',
+    #'cloudinary_storage',
     'cloudinary',
 
 
