@@ -21,12 +21,8 @@ WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
 
     'cloudinary_storage',
-=======
-    
->>>>>>> fbe21e0d742e8605dc35d5f7333f234f010c3713
     'jazzmin',
     'django.contrib.sites',
     'django.contrib.admin',
@@ -232,7 +228,6 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": datetime.timedelta(hours=72),
 }
 
-<<<<<<< HEAD
 ###############
 ###############
 #####
@@ -249,8 +244,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 #APPEND_SLASH=False
-=======
->>>>>>> fbe21e0d742e8605dc35d5f7333f234f010c3713
 
 
 
@@ -273,14 +266,8 @@ if DEBUG:
         }
     }
     STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
-<<<<<<< HEAD
 
 
-=======
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn/')
-    
-    
->>>>>>> fbe21e0d742e8605dc35d5f7333f234f010c3713
 
 else:
 
