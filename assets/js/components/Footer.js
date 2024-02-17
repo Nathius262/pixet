@@ -7,7 +7,7 @@ function footer(){
             <div class="row">
                 <div class="col-sm-3">
                     <div class="footer-widget">
-                        <a href="contact.html">
+                        <a href="contact">
                         <img src="assets/images/logo-footer.png" alt="logo footer">
                         </a>
                     </div>
@@ -26,7 +26,7 @@ function footer(){
                     <div class="footer-widget">
                         <h5 class="title">Author</h5>
                         <ul>
-                            <li><a href="/frontend/about.html">About Us</a></li>
+                            <li><a href="/frontend/about">About Us</a></li>
                             <li><a href="/blog_list/">Blog</a></li>
                             <li><a href="/contact/">Contact</a></li>
                         </ul>

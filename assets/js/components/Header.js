@@ -5,7 +5,7 @@ function Header(){
         </button>
         <div class="container">
             <!-- Begin Logo -->
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index">
                 <img src="assets/images/logo2.png" width="250" alt="PIXTINFINITY lOGO">
             </a>
             <!-- End Logo -->
@@ -14,22 +14,22 @@ function Header(){
                 <!-- Begin Menu -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="index">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="category.html">News</a>
+                            <a class="dropdown-item" href="category">News</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
+                        <a class="nav-link" href="blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a target="" class="nav-link highlight" href="#">Login</a>

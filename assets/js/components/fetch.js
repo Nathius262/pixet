@@ -43,11 +43,11 @@ async function renderModelList(url, options) {
             <!-- begin post -->
             <div class="col-md-6 grid-item">
                 <div class="card">
-                    <a href="blog.html?post=${blog.slug}">
+                    <a href="blog?post=${blog.slug}">
                     <img class="img-fluid" src="${blog.image}" alt="${blog.title}">
                     </a>
                     <div class="card-block">
-                        <h2 class="card-title"><a href="blog.html?post=${blog.slug}">${blog.title}</a></h2>
+                        <h2 class="card-title"><a href="blog_detail?post=${blog.slug}">${blog.title}</a></h2>
                         <h4 class="card-text">
                         ${truncateWords(blog.body, 10)}
                         </h4>
@@ -60,7 +60,7 @@ async function renderModelList(url, options) {
                                 <span class="post-name"><a target="_blank" href="#">Pixtinfinity</a></span><br/>
                                 <span class="post-date"></span>
                                 </span>
-                                <span class="post-read-more"><a href="blog_detail.html?post=${blog.slug}" title="Read Story"><i class="fa fa-link"></i></a></span>
+                                <span class="post-read-more"><a href="blog_detail?post=${blog.slug}" title="Read Story"><i class="fa fa-link"></i></a></span>
                                 <div class="clearfix">
                                 </div>
                             </div>
@@ -121,7 +121,7 @@ async function news(url, options){
                 <div class="mn-img">
                     <img src="${blog.image}">
                     <div class="mn-title">
-                        <a href="blog_detail.html?post=${blog.slug}" data-locate="${blog.abssolute_url}" class="locate-data">${blog.title}</a>
+                        <a href="blog_detail?post=${blog.slug}" data-locate="${blog.abssolute_url}" class="locate-data">${blog.title}</a>
                     </div>
                 </div>
             </div>
