@@ -31,9 +31,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'corsheaders',
-    
+
 
     #installed apps
     #'cloudinary_storage',
@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ###############
 CORS_URLS_REGEX = r"^/api/.*$"
 
-CORS_ALLOWED_ORIGINS = [    
+CORS_ALLOWED_ORIGINS = [
     f"https://{config('END_POINT')}",
     f"http://{config('END_POINT')}",
 ]
@@ -126,8 +126,8 @@ if DEBUG:
         "http://127.0.0.1:3000",
         "http://127.0.0.1:5500",
         "http://localhost:5500",
-    ]  
-    
+    ]
+
 
 #APPEND_SLASH=False
 
