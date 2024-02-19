@@ -11,6 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
     author = serializers.CharField(source='author.username', read_only=True)
     #tag = serializers.SerializerMethodField(read_only=True)
     abssolute_url = serializers.SerializerMethodField('get_absolute_url')
+    tag = serializers.SerializerMethodField('get_tag')
 
     class Meta:
         model = Post
@@ -19,3 +20,13 @@ class PostSerializer(serializers.ModelSerializer):
     
     def get_absolute_url(self, obj):
         return obj.get_absolute_url()
+    
+    def get_tag(self, obj):
+        tag_list=[]
+        for item in obj.tag.all():
+            tg = {
+                'name':item.name,
+                'id':item.id
+            }
+            tag_list.append(tg)
+        return tag_list

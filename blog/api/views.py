@@ -31,3 +31,24 @@ class TagViewSet(generics.GenericAPIView, mixins.ListModelMixin):
     
     def get(self, request):
         return self.list(request)
+    
+    
+    
+class TagFilterPostViewSet(generics.GenericAPIView, mixins.ListModelMixin):    
+    serializer_class = PostSerializer
+    queryset = Post.objects.all().filter(publish_status=True)
+    lookup_field = 'id'
+    pagination_class = SetBlogPostPaginationResult
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['title', 'body', 'author__username', 'tag__name', ]
+    
+    
+    def get_queryset(self):
+        tag_slug = self.kwargs.get('tag', None)
+        if tag_slug:
+            queryset = self.queryset.filter(tag=tag_slug)
+        return queryset
+
+    def get(self, request, tag=None):
+        return self.list(request)
+        
