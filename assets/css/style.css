@@ -2109,3 +2109,10 @@ ul.social_icon li a {
 	background-color: var(--blue);
 	color: var(--white);
 }
+
+ul.tags li a {
+    background: var(--blue);
+    color: #373737;
+    padding: 3px 10px;
+	margin-bottom: 10px;
+}
