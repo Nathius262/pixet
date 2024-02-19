@@ -29,6 +29,7 @@ async function navigateToDetailedPost() {
         </li>
     `)
     }
+	news(tag_endpoint+data.tag[2].id)
 
     postimageEl.innerHTML = `<img class="featured-image img-fluid" src="${data.image}" alt="">`
 }
