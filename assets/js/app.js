@@ -1,30 +1,17 @@
 import {Header} from "./components/Header.js"
 import {footer} from "./components/Footer.js"
-import {renderModelList, news, navigateToDetailedPost} from "./components/fetch.js"
+import {tagPostList} from "./components/fetch.js"
 
 let header = document.querySelector('#header')
 let footerEl = document.querySelector('footer')
 let head = document.querySelector('head')
-const endpoint = "https://pixtinfinity.pythonanywhere.com"
-const blog_endpoint = endpoint+"/api/post/"
-const siteURL = window.location.protocol + '//' + window.location.host
-
-let options = {
-    "method":"GET",
-	"origin": siteURL,
-    "headers":{
-        'Content-Type': 'application/json',
-        //'X-CSRFToken': csrftoken,
-    },
-}
 
 
 header.insertAdjacentHTML("afterbegin", Header())
 footerEl.insertAdjacentHTML("afterbegin", footer())
 
 try {
-    //postEl.insertAdjacentHTML('afterbegin', post())
-    //renderModelList(blog_endpoint)
+    tagPostList()
 } catch (TypeError) {
     
 }
@@ -45,8 +32,3 @@ head.insertAdjacentHTML('afterbegin', `
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
 `)
-
-
-//navigateToDetailedPost()
-
-

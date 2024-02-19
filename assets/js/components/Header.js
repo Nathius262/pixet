@@ -18,8 +18,8 @@ function Header(){
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="category">News</a>
+                        <div class="dropdown-menu tag_list" aria-labelledby="dropdown01">
+                            
                         </div>
                     </li>
                     <li class="nav-item">
