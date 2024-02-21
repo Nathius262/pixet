@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="description" content="Transforming Ideas into Immersive Experiences through Innovative Programming">
+		<meta name="description" content="Transforming Ideas into Immersive Experiences through Innovative Programming" id="mDescription">
 		<meta name="keywords" content="pixtinifinty, pixet, pixt, infinity, category, blog, details">
 		<meta name="author" content="pixtinifinty">
 
@@ -54,6 +54,24 @@
 					// 'X-CSRFToken': csrftoken,
 				}
 			}
+			// Example dynamic content update with JavaScript
+			const title = "data.title"
+			const description = "truncateWords(data.body, 8)"
+			const imageUrl = "data.image"
+			const postUrl = "post_url"
+		
+			// Update Open Graph meta tags
+			document.getElementById("ogTitle").setAttribute("content", title);
+			document.getElementById("ogDescription").setAttribute("content", description);
+			document.getElementById("ogImage").setAttribute("content", imageUrl);
+			document.getElementById("ogUrl").setAttribute("content", postUrl);
+
+			document.getElementById('mDescription').setAttribute('content', description)
+		
+			// Update Twitter meta tags
+			document.getElementById("twitterTitle").setAttribute("content", title);
+			document.getElementById("twitterDescription").setAttribute("content", description);
+			document.getElementById("twitterImage").setAttribute("content", imageUrl);
 		</script>
 		<style>
 			/*----------------------------
@@ -203,6 +221,7 @@ preloader area
 							================================================== -->
 			</div>
 		</div>
+
 		<script type="module">
 			window.addEventListener('load', () => {
 				setInterval(() => {
@@ -215,6 +234,8 @@ preloader area
 			setTimeout(() => {
 				hljs.highlightAll();
 			}, 3000)
+
+			
 		</script>
 
 
