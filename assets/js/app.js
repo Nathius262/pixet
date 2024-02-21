@@ -1,10 +1,12 @@
 import {Header} from "./components/Header.js"
 import {footer} from "./components/Footer.js"
 import {tagPostList} from "./components/fetch.js"
+import {sidebar} from "./components/Sidebar.js"
 
 let header = document.querySelector('#header')
 let footerEl = document.querySelector('footer')
 let head = document.querySelector('head')
+let sidebarEl = document.querySelector('.sidebar')
 
 
 header.insertAdjacentHTML("afterbegin", Header())
@@ -12,6 +14,7 @@ footerEl.insertAdjacentHTML("afterbegin", footer())
 
 try {
     tagPostList()
+    sidebarEl.insertAdjacentHTML('afterbegin', sidebar())
 } catch (TypeError) {
     
 }
