@@ -164,9 +164,13 @@ async function tagPostList() {
     const tag_url = `${endpoint}/api/tag/`;
     const data = await fetchData(tag_url);
     let tagListEl = document.querySelector('.tag_list')
+    let readmoretagEl = document.querySelector('.read-more')
     data.results.forEach(blog => {
         tagListEl.insertAdjacentHTML('afterbegin', `
             <a class="dropdown-item" href="category?tag=${blog.id}">${blog.name}</a>
+        `)
+        readmoretagEl.insertAdjacentHTML('afterbegin', `
+            <li><a href="category?tag=${blog.id}">${blog.name}</a></li>
         `)
     })
 }
