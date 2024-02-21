@@ -1,224 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="assets/images/favicon.ico">
-<title>PIXTINFINITY</title>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"> 
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Transforming Ideas into Immersive Experiences through Innovative Programming">
+		<meta name="keywords" content="pixtinifinty, pixet, pixt, infinity, category, blog, details">
+		<meta name="author" content="pixtinifinty">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+		<!--socail share-->
+		<meta property="og:title" content="Pixtinfinity- Programing Ideas Into Experience" id="ogTitle">
+		<meta property="og:description" content="Transforming Ideas into Immersive Experiences through Innovative Programming" id="ogDescription">
+		<meta property="og:image" content="https://pixtinfinity.com/assets/images/logo-footer.png" id="ogImage">
+		<meta property="og:url" content="https://pixtinfinity.com/blog_detail"  id="ogUrl">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+		<!--twitter social share-->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Pixtinfinity- Programing Ideas Into Experience" id="twitterTitle">
+		<meta name="twitter:description" content="Transforming Ideas into Immersive Experiences through Innovative Programming" id="twitterDescription">
+		<meta name="twitter:image" content="https://pixtinfinity.com/assets/images/logo-footer.png" id="twitterImage">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="icon" href="assets/images/favicon.ico">
+		<title>PIXTINFINITY | DETAILED POST</title>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
 
-<link href="assets/css/theme.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css">
+
+		<link href="assets/css/theme.css" rel="stylesheet">
 
 
-<link href="assets/css/style.css" rel="stylesheet">
-<link href="assets/css/main.css" rel="stylesheet">
-<!-- Begin tracking codes here, including ShareThis/Analytics -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<link href="assets/css/style.css" rel="stylesheet">
+		<link
+		href="assets/css/main.css" rel="stylesheet">
+		<!-- Begin tracking codes here, including ShareThis/Analytics -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
-<script>
-	const endpoint = "https://pixtinfinity.pythonanywhere.com"
-	const blog_endpoint = endpoint+"/api/post/"
-	const siteURL = window.location.protocol + '//' + window.location.host
+		<script>
+			const endpoint = "https://pixtinfinity.pythonanywhere.com"
+			const blog_endpoint = endpoint + "/api/post/"
+			const siteURL = window.location.protocol + '//' + window.location.host
 
-	let options = {
-		"method":"GET",
-		"origin": siteURL,
-		"headers":{
-			'Content-Type': 'application/json',
-			//'X-CSRFToken': csrftoken,
-		},
-	}
-</script>
-<style>
-	/*----------------------------
+			let options = {
+				"method": "GET",
+				"origin": siteURL,
+				"headers": {
+					'Content-Type': 'application/json',
+					// 'X-CSRFToken': csrftoken,
+				}
+			}
+		</script>
+		<style>
+			/*----------------------------
 preloader area
 ----------------------------*/
 
-	.loader_bg {
-		position: fixed;
-		z-index: 9999999;
-		background: #fff;
-		width: 100%;
-		height: 100%;
-	}
+			.loader_bg {
+				position: fixed;
+				z-index: 9999999;
+				background: #fff;
+				width: 100%;
+				height: 100%;
+			}
 
-	.loader {
-		height: 100%;
-		width: 100%;
-		position: absolute;
-		left: 0;
-		top: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+			.loader {
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
 
-	.loader img {
-		width: 280px;
-	}
-	.hidden-item {
-		visibility: hidden;
-		opacity: 0;
-		transition: visibility 0s 1s, opacity 1s linear;
-	}
-	.show-hidden{
-		visibility: hidden;
-		opacity: 1;
-		transition: visibility 0s 1.5s, opacity 1.5s linear
-	}
+			.loader img {
+				width: 280px;
+			}
+			.hidden-item {
+				visibility: hidden;
+				opacity: 0;
+				transition: visibility 0s 1s, opacity 1s linear;
+			}
+			.show-hidden {
+				visibility: hidden;
+				opacity: 1;
+				transition: visibility 0s 1.5s, opacity 1.5s linear
+			}
 
-</style>
+		</style>
 
 
-    
-<!-- End tracking codes here, including ShareThis/Analytics -->
-</head>
-<body class="layout-default">
-	<div class="loader_bg" id="loader">
-		<div class="loader">
-		  <img src="assets/images/loading.gif" alt="loading" />
-		</div>
-	</div>
-
-	<div id="root" class="show-hidden">
-		<!-- Begin Menu Navigation
-		================================================== -->
-		<header id="header" class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
-
-		</header>
-		<!-- End Menu Navigation
-		================================================== -->
-		<div class="site-content">
-			<div class="container">
-				<!-- Content
-			================================================== -->
-				<div class="main-content">
-					<!-- Begin Article
-					================================================== -->
-					<div class="row">
-						<!-- Sidebar -->
-						<div class="col-sm-4">
-							<div class="sidebar">
-								
-							</div>
-						</div>
-						<!-- Post -->
-						<div class="col-sm-8">
-							<div class="mainheading">
-								<!-- Post Categories -->
-								<div class="after-post-tags">
-									<ul class="tags">
-										
-									</ul>
-								</div>
-								<!-- End Categories -->
-								<!-- Post Title -->
-								<h1 class="posttitle"></h1>
-							</div>
-							<!-- Post Featured Image -->
-							<div id="postimage">
-								<img class="featured-image img-fluid" src="assets/images/3.jpg" alt="">
-							</div>
-							<!-- End Featured Image -->
-							<!-- Post Content -->
-							<div class="article-post">
-								
-							</div>
-
-							<div class="main-news mt-5">
-								<div class="container">
-									<div>
-										<h2>Related Post</h2>
-									</div>
-									<div class="row">
-										<div class="col">
-											<div class="row" id="main-news">
-												
-											</div>
-										</div>
-			
-										
-									</div>
-								</div>
-							</div>
-							<!-- Begin Comments
-							===============================================
-							<section>
-							<div id="comments">
-								<section class="disqus">
-								<div id="disqus_thread">
-								</div>
-								<script type="text/javascript">
-									var disqus_shortname = 'demowebsite'; 
-									var disqus_developer = 0;
-									(function() {
-										var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-										dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
-										(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-									})();
-								</script>
-								<noscript>
-								Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-								</noscript>                        
-								</section>
-							</div>
-							</section>
-							End Comments
-							================================================== -->
-						</div>
-						<!-- End Post -->
-					</div>
-					<!-- End Article
-					================================================== -->
-				</div>
+		<!-- End tracking codes here, including ShareThis/Analytics -->
+	</head>
+	<body class="layout-default">
+		<div class="loader_bg" id="loader">
+			<div class="loader">
+				<img src="assets/images/loading.gif" alt="loading"/>
 			</div>
-			<!-- /.container -->
-
-			<!-- Begin Footer
-			================================================== -->
-
-			<!-- Begin Footer
-			================================================== -->
-			<footer class="footer">	</footer>
-			<!-- End Footer
-			================================================== -->
 		</div>
-	</div>
-	<script type="module">
-		window.addEventListener('load', () => {
-			setInterval(() => {
-				document.querySelector("#loader").classList.add('hidden-item')
-				document.querySelector("#root").classList.remove('show-hidden')
+
+		<div
+			id="root" class="show-hidden">
+			<!-- Begin Menu Navigation
+					================================================== -->
+			<header id="header" class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation"></header>
+			<!-- End Menu Navigation
+					================================================== -->
+			<div class="site-content">
+				<div
+					class="container">
+					<!-- Content
+								================================================== -->
+					<div
+						class="main-content">
+						<!-- Begin Article
+											================================================== -->
+						<div
+							class="row">
+							<!-- Sidebar -->
+							<div class="col-sm-4">
+								<div class="sidebar"></div>
+							</div>
+							<!-- Post -->
+							<div class="col-sm-8">
+								<div
+									class="mainheading">
+									<!-- Post Categories -->
+									<div class="after-post-tags">
+										<ul class="tags"></ul>
+									</div>
+									<!-- End Categories -->
+									<!-- Post Title -->
+									<h1 class="posttitle"></h1>
+								</div>
+								<!-- Post Featured Image -->
+								<div id="postimage">
+									<img class="featured-image img-fluid" src="assets/images/3.jpg" alt="">
+								</div>
+								<!-- End Featured Image -->
+								<!-- Post Content -->
+								<div class="article-post"></div>
+
+								<div class="main-news mt-5">
+									<div class="container">
+										<div>
+											<h2>Related Post</h2>
+										</div>
+										<div class="row">
+											<div class="col">
+												<div class="row" id="main-news"></div>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+								<!-- Begin Comments
+															===============================================
+															<section>
+															<div id="comments">
+																<section class="disqus">
+																<div id="disqus_thread">
+																</div>
+																<script type="text/javascript">
+																	var disqus_shortname = 'demowebsite'; 
+																	var disqus_developer = 0;
+																	(function() {
+																		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+																		dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+																		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+																	})();
+																</script>
+																<noscript>
+																Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+																</noscript>                        
+																</section>
+															</div>
+															</section>
+															End Comments
+															================================================== -->
+							</div>
+							<!-- End Post -->
+						</div>
+						<!-- End Article
+											================================================== -->
+					</div>
+				</div>
+				<!-- /.container -->
+
+				<!-- Begin Footer
+							================================================== -->
+
+				<!-- Begin Footer
+							================================================== --><footer class="footer"> </footer>
+				<!-- End Footer
+							================================================== -->
+			</div>
+		</div>
+		<script type="module">
+			window.addEventListener('load', () => {
+				setInterval(() => {
+					document.querySelector("#loader").classList.add('hidden-item')
+					document.querySelector("#root").classList.remove('show-hidden')
+				}, 3000)
+			})
+			import {navigateToDetailedPost} from "/assets/js/components/fetch.js"
+			navigateToDetailedPost(blog_endpoint)
+			setTimeout(() => {
+				hljs.highlightAll();
 			}, 3000)
-		})
-		import{navigateToDetailedPost} from "/assets/js/components/fetch.js"			
-		navigateToDetailedPost(blog_endpoint)
-		setTimeout(() => {
-			hljs.highlightAll();
-		}, 3000)
-		
-	</script>
+		</script>
 
 
-	<!-- JavaScript
-	================================================== -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-	<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-	<script src="assets/js/masonry.pkgd.min.js"></script>
-	<script src="assets/js/theme.js"></script>
+		<!-- JavaScript
+			================================================== -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+		<script src="assets/js/masonry.pkgd.min.js"></script>
+		<script src="assets/js/theme.js"></script>
 
-	<script type="module" src="assets/js/app.js"></script>
+		<script type="module" src="assets/js/app.js"></script>
 
 
-</body>
+	</body>
 </html>

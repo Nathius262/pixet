@@ -32,6 +32,23 @@ async function navigateToDetailedPost() {
 	news(tag_endpoint+data.tag[2].id)
 
     postimageEl.innerHTML = `<img class="featured-image img-fluid" src="${data.image}" alt="">`
+
+    // Example dynamic content update with JavaScript
+    const title = data.title
+    const description = truncateWords(data.body, 8)
+    const imageUrl = data.image
+    const postUrl = post_url
+
+    // Update Open Graph meta tags
+    document.getElementById("ogTitle").setAttribute("content", title);
+    document.getElementById("ogDescription").setAttribute("content", description);
+    document.getElementById("ogImage").setAttribute("content", imageUrl);
+    document.getElementById("ogUrl").setAttribute("content", postUrl);
+
+    // Update Twitter meta tags
+    document.getElementById("twitterTitle").setAttribute("content", title);
+    document.getElementById("twitterDescription").setAttribute("content", description);
+    document.getElementById("twitterImage").setAttribute("content", imageUrl);
 }
 
 async function renderModelList(url, options) {
