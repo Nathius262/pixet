@@ -27,8 +27,9 @@ function footer(){
                         <h5 class="title">Author</h5>
                         <ul>
                             <li><a href="/about">About Us</a></li>
-                            <li><a href="/blog/">Blog</a></li>
-                            <li><a href="/contact/">Contact</a></li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/privacy-policy">Privacy</a></li>
                         </ul>
                     </div>
                 </div>
