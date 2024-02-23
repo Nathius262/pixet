@@ -169,9 +169,14 @@ async function tagPostList() {
         tagListEl.insertAdjacentHTML('afterbegin', `
             <a class="dropdown-item" href="category?tag=${blog.id}">${blog.name}</a>
         `)
-        readmoretagEl.insertAdjacentHTML('afterbegin', `
-            <li><a href="category?tag=${blog.id}">${blog.name}</a></li>
-        `)
+        try {
+            readmoretagEl.insertAdjacentHTML('afterbegin', `
+                <li><a href="category?tag=${blog.id}">${blog.name}</a></li>
+            `)
+        } catch (TypeError) {
+            
+        }
+        
     })
 }
 
