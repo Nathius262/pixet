@@ -1,0 +1,22 @@
+{
+  "name": "pixtinfinity",
+  "version": "1.0.0",
+  "description": "Pixet (Programming Ideas into Experience Tech) is setup by a group of individuals to the end of constructing human ideas into a virtual experience.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.3",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

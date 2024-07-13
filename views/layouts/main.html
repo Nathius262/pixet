@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Transforming Ideas into Immersive Experiences through Innovative Programming">
+		<meta name="keywords" content="pixtinifinty, pixet, pixt, infinity">
+		<meta name="author" content="pixtinifinty">
+		<meta property="og:title" content="Pixtinfinity- Programing Ideas Into Experience">
+		<meta property="og:description" content="Transforming Ideas into Immersive Experiences through Innovative Programming">
+		<meta property="og:image" content="https://pixtinfinity.com/images/logo-footer.png">
+		<meta property="og:url" content="https://pixtinfinity.com/">
+
+		<!--twitter social share-->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Pixtinfinity- Programing Ideas Into Experience" id="twitterTitle">
+		<meta name="twitter:description" content="Transforming Ideas into Immersive Experiences through Innovative Programming" id="twitterDescription">
+		<meta name="twitter:image" content="https://pixtinfinity.com/images/logo-footer.png" id="twitterImage">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="icon" href="images/favicon.ico">
+        <title>PIXTINFINITY</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"> 
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" integrity="sha512-siarrzI1u3pCqFG2LEzi87McrBmq6Tp7juVsdmGY1Dr8Saw+ZBAzDzrGwX3vgxX1NkioYNCFOVC0GpDPss10zQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" integrity="sha512-W/zrbCncQnky/EzL+/AYwTtosvrM+YG/V6piQLSe2HuKS6cmbw89kjYkp3tWFn1dkWV7L1ruvJyKbLz73Vlgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link href="css/theme.css" rel="stylesheet">
+
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+		<style>
+			/*----------------------------
+      preloader area
+      ----------------------------*/
+
+			.loader_bg {
+				position: fixed;
+				z-index: 9999999;
+				background: #fff;
+				width: 100%;
+				height: 100%;
+			}
+
+			.loader {
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.loader img {
+				width: 280px;
+			}
+			.hidden-item {
+				visibility: hidden;
+				opacity: 0;
+				transition: visibility 0s 1s, opacity 1s linear;
+			}
+			.show-hidden{
+				visibility: hidden;
+				opacity: 1;
+				transition: visibility 0s 1.5s, opacity 1.5s linear
+			}
+
+		</style>
+
+
+		<!-- End tracking codes here, including ShareThis/Analytics -->
+	</head>
+	<body class="layout-default">
+
+
+		<div class="loader_bg" id="loader">
+            <div class="loader">
+              <img src="images/loading.gif" alt="loading" />
+            </div>
+        </div>
+
+
+		<div id="root" class="show-hidden">
+			<!-- Begin Menu Navigation
+            ================================================== -->
+            <header id="header" class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsWow" aria-controls="navbarsWow" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="container">
+                    <!-- Begin Logo -->
+                    <a class="navbar-brand" href="index">
+                        <img src="images/logo2.png" width="250" alt="PIXTINFINITY lOGO">
+                    </a>
+                    <!-- End Logo -->
+                    <!-- Begin Menu -->
+                    <div class="collapse navbar-collapse" id="navbarsWow">
+                        <!-- Begin Menu -->
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+                                <div class="dropdown-menu tag_list" aria-labelledby="dropdown01">
+                                    
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a target="" class="nav-link highlight" href="#">Login</a>
+                            </li>
+                        </ul>
+                        <!-- End Menu -->
+                    </div>
+                </div>
+            </header>
+            <!-- End Menu Navigation
+            ================================================== -->
+            <div class="site-content">
+                {{{body}}}
+
+                <!-- Begin Footer
+                    ================================================== -->
+                <footer class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="footer-widget">
+                                    <a href="contact">
+                                    <img src="images/logo-footer.png" alt="logo footer">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="footer-widget">
+                                    <h5 class="title">Resources</h5>
+                                    <ul>
+                                        <li><a target="_blank" href="#">Digital Ocean</a></li>
+                                        <li><a target="_blank" href="#">GitHub</a></li>
+                                        <li><a target="_blank" href="#">Cloudinary</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="footer-widget">
+                                    <h5 class="title">Author</h5>
+                                    <ul>
+                                        <li><a href="/about">About Us</a></li>
+                                        <li><a href="/blog">Blog</a></li>
+                                        <li><a href="/contact">Contact</a></li>
+                                        <li><a href="/privacy-policy">Privacy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 text-light text-right footersocial">
+                                <p class="h5">Connect with Us</p>
+                                <a href="https://web.facebook.com/profile.php?id=61554717826060"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/pixtinfinity/"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="mailto:support@pixtinfinity.com"><i class="fa-brands fa-google"></i></a>
+                                <a href="https://github.com/Nathius262"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="copyright">
+                            <p class="pull-left">
+                                Copyright © <span id="date"></span> PIXTINFINITY
+                            </p>
+                            <p class="pull-right">
+                                <!-- Leave credit to author unless you own a commercial license: https://www.wowthemes.net/freebies-license/ -->
+                                <a href="https://www.wowthemes.net/affiliates-free-bootstrap-template/">"Powered by"</a> - Infinity
+                            </p>
+                            <div class="clearfix">
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End Footer
+                    ================================================== -->
+            </div>
+		</div>
+
+		<script type="module">
+            window.addEventListener('load', ()=>{
+              setInterval(()=>{
+                document.querySelector("#loader").classList.add('hidden-item')
+				document.querySelector("#root").classList.remove('show-hidden')
+              }, 3000)
+            })
+        </script>
+
+
+		<!-- JavaScript
+		================================================== -->
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CJNWYEMMWG"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-CJNWYEMMWG');
+		</script>
+        <script type="module" src="js/app.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+		<script src="js/masonry.pkgd.min.js"></script>
+		<script src="js/theme.js"></script>
+
+
+	</body>
+</html>
