@@ -59,7 +59,7 @@ class TopPostViewSet(generics.GenericAPIView, mixins.ListModelMixin):
     filter_backends = [SearchFilter, OrderingFilter]
 
     def get_queryset(self):
-        queryset = Post.objects.filter(publish_status=True).order_by('-hit_count_generic__hits')[:5]
+        queryset = Post.objects.filter(publish_status=True).order_by('-hit_count_generic__hits')[:6]
 
         return queryset
 
