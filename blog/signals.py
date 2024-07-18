@@ -6,6 +6,7 @@ from django.utils.text import slugify
 import cloudinary
 import requests
 from io import BytesIO
+from django.conf import settings
 
 @receiver(post_delete, sender=Post)
 def submission_delete(sender, instance, **kwargs):
@@ -13,24 +14,26 @@ def submission_delete(sender, instance, **kwargs):
 
 @receiver(post_save, sender=Post)
 def save_img(sender, instance, *args, **kwargs):
-    SIZE = 600, 600
-    if instance.image:
+    if not settings.DEBUG:
+        SIZE = 600, 600
+        if instance.image:
 
-        image_url = instance.image.url
+            image_url = instance.image.url
 
-        # Download the image from the URL
-        response = requests.get(image_url)
+            # Download the image from the URL
+            response = requests.get(image_url)
 
-        # Open the image from the downloaded content
-        pic = Image.open(BytesIO(response.content))
-        try:
-            pic.thumbnail(SIZE, Image.LANCZOS)
-            pic.save(instance.image.path)
-        except:
-            if pic.mode in ("RGBA", 'P'):
-                blog_pic = pic.convert("RGB")
-                blog_pic.thumbnail(SIZE, Image.LANCZOS)
-                blog_pic.save(instance.image.path)
+            # Open the image from the downloaded content
+            pic = Image.open(BytesIO(response.content))
+            try:
+                pic.thumbnail(SIZE, Image.LANCZOS)
+                pic.save(instance.image.path)
+            except:
+                if pic.mode in ("RGBA", 'P'):
+                    blog_pic = pic.convert("RGB")
+                    blog_pic.thumbnail(SIZE, Image.LANCZOS)
+                    blog_pic.save(instance.image.path)
+
 """
 @receiver(post_save, sender=Post)
 def save_img(sender, instance, created, *args, **kwargs):
@@ -87,8 +90,7 @@ def save_img(sender, instance, created, *args, **kwargs):
  """
 
 def pre_save_blog_post_receiver(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        instance.slug = slugify(instance.author.username + "-" + instance.title)
+    instance.clean()
 
 
 pre_save.connect(pre_save_blog_post_receiver, sender=Post)

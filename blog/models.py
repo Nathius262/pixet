@@ -3,6 +3,11 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.conf import settings
 from django.urls import reverse
 from .utils import upload_location
+from hitcount.models import HitCount
+from django.contrib.contenttypes.fields import GenericRelation
+from django.core.exceptions import ValidationError
+from django.utils.text import slugify
+
 
 # Create your models here.
 class Tag(models.Model):
@@ -27,7 +32,9 @@ class Post(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True, verbose_name="date published")
     date_updated = models.DateTimeField(auto_now=True, verbose_name="date updated")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="author")
-    slug = models.SlugField(blank=True, unique=True)
+    slug = models.SlugField(max_length=500, blank=True, unique=True)
+    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
+                                    related_query_name='hit_count_generic_relation')
 
     @property
     def image_url(self):
@@ -50,3 +57,24 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def clean(self):
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        # Check if the slug is unique, if not, suggest a new unique slug
+        original_slug = self.slug
+        unique_slug = original_slug
+        num = 1
+        while Post.objects.exclude(pk=self.pk).filter(slug=unique_slug).exists():
+            unique_slug = f"{original_slug}-{num:02d}"
+            num += 1
+
+        if unique_slug != original_slug:
+            raise ValidationError({'slug': f"Slug '{original_slug}' is already in use. Suggested slug: '{unique_slug}'"})
+
+        self.slug = unique_slug
+
+    def save(self, *args, **kwargs):
+        self.clean()  # Ensure the clean method is called
+        super(Post, self).save(*args, **kwargs)
