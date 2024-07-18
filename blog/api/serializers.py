@@ -47,7 +47,7 @@ class PostSerializer(serializers.ModelSerializer):
         truncated_text = text[:length] + '...'
         return truncated_text
     
-    
+
 class SinglePostSerializer(serializers.ModelSerializer):
     author = serializers.CharField(source='author.username', read_only=True)
     #tag = serializers.SerializerMethodField(read_only=True)
