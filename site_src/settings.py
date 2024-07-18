@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'ckeditor_uploader',
+    'hitcount',
 ]
 
 MIDDLEWARE = [
@@ -266,6 +267,7 @@ if DEBUG:
         }
     }
     STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn/')
 
 
 
