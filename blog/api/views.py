@@ -45,7 +45,8 @@ class PostViewSet(generics.GenericAPIView, mixins.ListModelMixin, mixins.Retriev
             # Add related posts to the response data
             response_data = response.data
             response_data['related_posts'] = related_posts_serializer.data
-            
+            session_id = request.session.session_key
+            response_data['session_id'] = session_id
             return Response(response_data)
         else:
             return self.list(request)
