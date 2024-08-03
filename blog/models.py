@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor_uploader.fields import RichTextUploadingField
+from django_ckeditor_5.fields import CKEditor5Field
 from django.conf import settings
 from django.urls import reverse
 from .utils import upload_location
@@ -26,7 +26,7 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=500, blank=False, null=True)
     tag = models.ManyToManyField(Tag, blank=False)
-    body = RichTextUploadingField(null=False, blank=False)
+    body = CKEditor5Field(config_name='extends', null=False, blank=True)
     image = models.ImageField(upload_to=upload_location, null=True, blank=True)
     publish_status = models.BooleanField(default=False)
     publish_date = models.DateTimeField(auto_now_add=True, verbose_name="date published")

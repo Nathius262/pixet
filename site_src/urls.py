@@ -21,7 +21,8 @@ from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    #path('ckeditor/', include('ckeditor_uploader.urls')),
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
     path("", include("blog.urls")),
     #path('api/auth/', include('dj_rest_auth.urls')),
     #path('api/auth/signup/', include('dj_rest_auth.registration.urls')),
