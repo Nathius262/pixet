@@ -1,4 +1,4 @@
-from .serializers import PostSerializer, TagSerializer, RelatedPostSerializer, SinglePostSerializer
+from .serializers import PostSerializer, TagSerializer, RelatedPostSerializer, SinglePostSerializer, NewsLetterSerializer
 from rest_framework import mixins, generics
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -6,7 +6,10 @@ from ..models import Post, Tag
 from hitcount.models import HitCount
 from hitcount.views import HitCountMixin
 from rest_framework.response import Response
+from rest_framework import status
 from django.db.models import Count
+from rest_framework.decorators import api_view
+from rest_framework.parsers import JSONParser
 
 # page size
 class SetBlogPostPaginationResult(PageNumberPagination):
@@ -93,3 +96,25 @@ class TagFilterPostViewSet(generics.GenericAPIView, mixins.ListModelMixin):
     def get(self, request, tag=None):
         return self.list(request)
         
+
+@api_view(['POST',])        
+def postNewsLetter(request):
+    
+    data = {}
+    if request.method == 'POST':
+        try:
+            obj = JSONParser().parse(request)
+            formSerializer = NewsLetterSerializer(data=obj)
+            if formSerializer.is_valid():
+                formSerializer.save()
+                data = {
+                    "message": "You have subscribed to our newsletter!",
+                }
+                return Response(data=data, status=status.HTTP_201_CREATED)
+            else:
+                return Response(formSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            print(e)
+            return Response(data={"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+    
+    return Response(data=data, status=status.HTTP_200_OK)

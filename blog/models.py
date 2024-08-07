@@ -78,3 +78,11 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.clean()  # Ensure the clean method is called
         super(Post, self).save(*args, **kwargs)
+
+
+class NewsLetter(models.Model):
+    email = models.EmailField(unique=True, blank=False, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.email)

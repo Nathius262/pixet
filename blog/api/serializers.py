@@ -1,12 +1,13 @@
 from rest_framework import serializers
 from bs4 import BeautifulSoup
-from ..models import Post, Tag
+from ..models import Post, Tag, NewsLetter
 
 class TagSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tag
         fields= '__all__'
+
 
 class PostSerializer(serializers.ModelSerializer):
     author = serializers.CharField(source='author.username', read_only=True)
@@ -83,4 +84,18 @@ class RelatedPostSerializer(serializers.ModelSerializer):
     
     def get_absolute_url(self, obj):
         return obj.get_absolute_url()
+
+class NewsLetterSerializer(serializers.ModelSerializer):
     
+    class Meta:
+        model = NewsLetter
+        fields = ['email',]
+        extra_kwargs = {
+            'email': {
+                'error_messages': {
+                    'required': "Please provide your email address.",
+                    'invalid': "Enter a valid email address.",
+                    'unique': "This email is already subscribed."
+                }
+            }
+        }

@@ -1,5 +1,11 @@
 from django.urls import path
-from .views import PostViewSet,TagViewSet, TagFilterPostViewSet, TopPostViewSet
+from .views import (
+    PostViewSet,
+    TagViewSet, 
+    TagFilterPostViewSet, 
+    TopPostViewSet, 
+    postNewsLetter
+)
 
 app_name = 'blog'
 
@@ -9,4 +15,5 @@ urlpatterns = [
     path('trends/', TopPostViewSet.as_view(), name='trend_post_api'),
     path('tag/', TagViewSet.as_view(), name='list_tag_api'),
     path('tag/<tag>', TagFilterPostViewSet.as_view(), name='filter_tag_api'),
+    path('news-letter', postNewsLetter, name='news_letter'),
 ]
