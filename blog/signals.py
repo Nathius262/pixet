@@ -43,13 +43,29 @@ def send_newsletter_email(sender, instance, created, **kwargs):
         # Truncate the blog content
         truncated_content = truncate_html(instance.body, length=100)
         
+        html_message = f"""
+            <html>
+                <body>
+                    <p>Hello,</p>
+                    <p>A new blog post has been published:</p>
+                    <h2>{instance.title}</h2>
+                    <img src="{instance.image_url}" alt="{instance.title}" style="max-width: 100%; height: auto;">
+                    <p>{truncated_content}</p>
+                    <p><a href="https://pixtinfinity.com/blog/{instance.slug}">Learn More</a></p>
+                    <p>Thank you for subscribing to our newsletter!</p>
+                </body>
+            </html>
+        """
+
+        # Send an email to each subscriber
         for subscriber in subscribers:
             send_mail(
                 subject=f"New Blog Post: {instance.title}",
-                message=f"Hello,\n\nA new blog post has been published: \n{instance.title}\n{instance.image_url}\n\n{truncated_content}\n\n<a href='https://pixtinfinity.com/blog/{instance.slug}'>Learn More</a>\n\nThank you for subscribing to our newsletter!",
+                message=f"Hello,\n\nA new blog post has been published: \n{instance.title}\n\n{truncated_content}\n\nhttps://pixtinfinity.com/blog/{instance.slug}\n\nThank you for subscribing to our newsletter!",
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[subscriber.email],
                 fail_silently=False,
+                html_message=html_message,
             )
 """
 @receiver(post_save, sender=Post)
