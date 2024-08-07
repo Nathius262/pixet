@@ -1,7 +1,8 @@
 from django.conf import settings
 import uuid
 import os
-
+from bs4 import BeautifulSoup
+ 
 
 def upload_location(instance, filename):
     # Generate the file path based on the instance's author ID and slug
@@ -18,3 +19,14 @@ def upload_location(instance, filename):
 def generate_ref_code():
     code = str(uuid.uuid4())[:12]
     return code
+
+def truncate_html(html, length):
+        # Use BeautifulSoup to parse the HTML and get the plain text
+        soup = BeautifulSoup(html, "html.parser")
+        text = soup.get_text()
+
+        # Truncate the text to the desired length
+        if len(text) <= length:
+            return text
+        truncated_text = text[:length] + '...'
+        return truncated_text

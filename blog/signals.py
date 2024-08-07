@@ -1,12 +1,13 @@
 from django.dispatch import receiver
 from django.db.models.signals import pre_save, post_delete, post_save
-from .models import Post
+from .models import Post, NewsLetter
 from PIL import Image
-from django.utils.text import slugify
-import cloudinary
 import requests
 from io import BytesIO
 from django.conf import settings
+from django.core.mail import send_mail
+from .utils import truncate_html
+
 
 @receiver(post_delete, sender=Post)
 def submission_delete(sender, instance, **kwargs):
@@ -34,6 +35,22 @@ def save_img(sender, instance, *args, **kwargs):
                     blog_pic.thumbnail(SIZE, Image.LANCZOS)
                     blog_pic.save(instance.image.path)
 
+
+@receiver(post_save, sender=Post)
+def send_newsletter_email(sender, instance, created, **kwargs):
+    if created:
+        subscribers = NewsLetter.objects.all()
+        # Truncate the blog content
+        truncated_content = truncate_html(instance.body, length=100)
+        
+        for subscriber in subscribers:
+            send_mail(
+                subject=f"New Blog Post: {instance.title}",
+                message=f"Hello,\n\nA new blog post has been published: \n{instance.title}\n{instance.image_url}\n\n{truncated_content}\n\n<a href='https://pixtinfinity.com/blog/{instance.slug}'>Learn More</a>\n\nThank you for subscribing to our newsletter!",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[subscriber.email],
+                fail_silently=False,
+            )
 """
 @receiver(post_save, sender=Post)
 def save_img(sender, instance, created, *args, **kwargs):
