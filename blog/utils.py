@@ -2,7 +2,7 @@ from django.conf import settings
 import uuid
 import os
 from bs4 import BeautifulSoup
- 
+
 
 def upload_location(instance, filename):
     # Generate the file path based on the instance's author ID and slug

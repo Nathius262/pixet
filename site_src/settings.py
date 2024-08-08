@@ -272,46 +272,7 @@ if DEBUG:
 
 else:
 
-    import cloudinary
-
-    #STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"
-
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-
-    cloudinary.config(
-        cloud_name=config('CLOUD_NAME'),
-        api_key=config('API_KEY'),
-        api_secret=config('API_SECRET'),
-        api_proxy = "http://proxy.server:3128"
-    )
-
-    CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': config('CLOUD_NAME'),
-        'API_KEY': config('API_KEY'),
-        'API_SECRET': config('API_SECRET'),
-        'api_proxy' :"http://proxy.server:3128",
-        'SECURE': True,
-        'MEDIA_TAG': 'media',
-        'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
-        'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
-        'STATIC_TAG': 'static',
-        'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'static/'),
-        'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
-                                    'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
-        'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv' ,'3gp' ,'3g2' ,'wmv' ,
-                                    'mpeg' ,'flv' ,'mkv' ,'avi'],
-        'MAGIC_FILE_PATH': 'media',
-        'PREFIX': "/media/"
-    }
-    import cloudinary.uploader
-    import cloudinary.api
     
-    # CKEDITOR_5_CUSTOM_CSS = 'path_to_your_custom_css.css'  # Optional: Custom CSS for the editor
-
-    CKEDITOR_5_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    CKEDITOR_5_UPLOAD_PATH = 'uploads/' 
-
 
     DATABASES = {
         'default': {
@@ -449,13 +410,56 @@ JAZZMIN_SETTINGS = {
 }
 
 # ckeditor
-CKEDITOR_UPLOAD_PATH = "uploads/"
+#CKEDITOR_UPLOAD_PATH = "uploads/"
 
-CKEDITOR_IMAGE_BACKEND = "pillow"
+#CKEDITOR_IMAGE_BACKEND = "pillow"
 
 AWS_QUERYSTRING_AUTH = False
 
 #CKEDITOR_JS_URL = 'https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js'
+
+
+
+import cloudinary
+
+#STATICFILES_STORAGE = "cloudinary_storage.storage.StaticCloudinaryStorage"
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+cloudinary.config(
+    cloud_name=config('CLOUD_NAME'),
+    api_key=config('API_KEY'),
+    api_secret=config('API_SECRET'),
+    api_proxy = "http://proxy.server:3128"
+)
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
+    'api_proxy' :"http://proxy.server:3128",
+    'SECURE': True,
+    'MEDIA_TAG': 'media',
+    'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
+    'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
+    'STATIC_TAG': 'static',
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'static/'),
+    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
+                                'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
+    'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv' ,'3gp' ,'3g2' ,'wmv' ,
+                                'mpeg' ,'flv' ,'mkv' ,'avi'],
+    'MAGIC_FILE_PATH': 'media',
+    'PREFIX': "/media/"
+}
+import cloudinary.uploader
+import cloudinary.api
+# Ensure that this is included
+CKEDITOR_5_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CK_EDITOR_5_UPLOAD_FILE_VIEW_NAME = "custom_upload_file"
+CKEDITOR_5_UPLOAD_PATH = 'uploads/'
+
+# CKEDITOR_5_CUSTOM_CSS = 'path_to_your_custom_css.css'  # Optional: Custom CSS for the editor
 
 #CKEDITOR_BASEPATH = os.path.join(BASE_DIR , 'static', 'ckeditor')
 customColorPalette = [
@@ -489,6 +493,8 @@ CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': ['heading', '|', 'bold', 'italic', 'link',
                     'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', ],
+        'extraPlugins': ','.join(['uploadimage']),  # Ensure the uploadimage plugin is included
+        'upload_url': '/uploads/',  # URL for image upload
 
     },
     'extends': {
