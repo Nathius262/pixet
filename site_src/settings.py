@@ -306,6 +306,11 @@ else:
     }
     import cloudinary.uploader
     import cloudinary.api
+    
+    # CKEDITOR_5_CUSTOM_CSS = 'path_to_your_custom_css.css'  # Optional: Custom CSS for the editor
+
+    CKEDITOR_5_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    CKEDITOR_5_UPLOAD_PATH = 'uploads/' 
 
 
     DATABASES = {
