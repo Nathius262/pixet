@@ -24,7 +24,7 @@ def ckeditor5_upload(request):
         uploaded_file = request.FILES['upload']
         
         # Upload an image
-        upload_result = cloudinary.uploader.upload(uploaded_file)
+        upload_result = cloudinary.uploader.upload(uploaded_file, folder="ckeditor_upload/")
         url = upload_result["secure_url"]
         print(url)
         
