@@ -51,7 +51,7 @@ def send_newsletter_email(sender, instance, created, **kwargs):
                     <h2>{instance.title}</h2>
                     <img src="{instance.image_url}" alt="{instance.title}" style="max-width: 100%; height: auto;">
                     <p>{truncated_content}</p>
-                    <p><a href="https://pixtinfinity.com/blog/{instance.slug}">Learn More</a></p>
+                    <p><a href="https://www.pixtinfinity.com/blog/{instance.slug}">Learn More</a></p>
                     <p>Thank you for subscribing to our newsletter!</p>
                 </body>
             </html>
